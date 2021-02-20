@@ -4,6 +4,6 @@
 @section('contenido')
     
 
-    <h2> Soy la pagina de precios </h2>
+    <h1> home </h1>
 @endsection
  
