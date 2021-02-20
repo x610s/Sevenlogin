@@ -11,8 +11,8 @@
       <li class="nav-item">
         <a class="nav-link" href=" {{route('precios.index')}} ">Precios</a>
       </li>
-   
 
+    
 
 
 
@@ -20,11 +20,22 @@
     @auth
         
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+         aria-haspopup="true" aria-expanded="false">
         {{auth()->user()->name}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Profile</a>
+        <a  class="dropdown-item" href="{{ route('logout') }}"
+    onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+    Logout
+</a>
+
+<form id="logout-form" action="{{ route('logout') }}" method="POST">
+  @csrf
+</form>
+
         </div>
       </li>
 
@@ -32,8 +43,14 @@
 
 
 
+
         {{-- No registrado --}}
     @else
+    
+      <li class="nav-item">
+        <a class="nav-link" href=" {{route('register')}} ">Registrate</a>
+      </li>
+   
         @include('modalLogin.modalLogin')
     @endauth
 
