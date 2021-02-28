@@ -1,59 +1,48 @@
+
 <template>
- <!--  <carousel class="mt-2 p-4" perPage=4 
-       :navigationEnabled="true"
-      paginationActiveColor="#333">
-    <slide
-      class="slide justify-content-center"
-      v-for="(cliente, index) of listaCliente"
-      :key="index"
-> 
-       <img  v-bind:src="'/assets/' + cliente.src"  /> 
-       <a href="#" class=" btn ">Ir a la pagina</a>
-    </slide>
-  </carousel> -->
-  <div> 
-    asdklaklñsdklñ
-  </div>
+  <carousel
+    :nav="false"
+    :autoplay="false"
+    :autoplaySpeed=1000
+    class="carrusel  mt-2 py-2"
+    :items="7"
+    :responsive="{
+      0: { items: 3 },
+      768: { items: 5 },
+      991: { items: 7 },
+    }"
+  >
+    <div v-for="cliente in clientes" :key="cliente.index" class="contenedor mb-3 p-2">
+      <div v-for="(i,index) in 2" :key="i.index">
+       <img  class="rounded my-2" v-bind:src="'/assets/' + cliente[index].src"  v-if="cliente[index].src != 'null' " /> 
+       </div>
+    </div>
+  </carousel>
 </template>
 
 <script>
-/* import { clientes } from "../clientesDB";
-import { Carousel, Slide } from "vue-carousel";
-export default {
-  name: "CarrouselComponent",
-
-  data() {
-    return {
-      listaCliente: clientes,
-    };
-  },
-  components: {
-    Carousel,
-    Slide,
-  },
-}; */
-
-
+import carousel from "vue-owl-carousel";
 import { clientes } from "../clientesDB.js";
 export default {
+  components: { carousel },
   data() {
     return {
-      clientes:'hola',
+      clientes,
     };
   },
 };
 </script>
 
 <style scoped>
-/* img {
-  width: 250px;
-  height: 200px;
+.contenedor {
+  width: 12.5rem;
 }
-.btn{
-  margin-top: 20px;
+img {
+  height: 139px;
+  transition: all 300ms;
 }
-.slide {
-
-  text-align: center !important;
-} */
+img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
 </style>
