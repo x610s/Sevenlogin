@@ -4,6 +4,19 @@
 @section('contenido')
     
 
-    <h2> Soy la pagina de precios </h2>
+
+    <div class="container">
+    <div class="">
+
+        @auth
+            @if (auth()->user()->hasRoles(Array('admin')))
+            <descuento-component></descuento-component>
+            @endif   
+        @endauth
+
+        <card-component></card-component>
+    </div>
+
+    </div>
 @endsection
  

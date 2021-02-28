@@ -11,6 +11,11 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+
+    public function roles(){
+       return $this->belongsToMany(Role::class, 'assigned_roles', 'user_id', 'role_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -42,13 +47,12 @@ class User extends Authenticatable
     ];
 
 
-    public function roles(){
-        return $this->belongsToMany(Role::class,'assigned_roles');
-    }
+ 
+
+
 
     public function hasRoles(array $roles)
     {
-
         foreach ($roles as $role) {
             foreach ($this->roles as $userRole) {
                 if($userRole->key === $role){

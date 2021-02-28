@@ -10944,4 +10944,65 @@ a.text-dark:focus {
   }
 }
 
+.blue-row {
+  background-color: #024e7e;
+}
+
+.navbar-dark {
+  background-color: black !important;
+  height: 100px !important;
+}
+
+.izq_col .principal-text {
+  text-shadow: 0px 0px 1px #333;
+  font-size: 50px;
+}
+
+.izq_col p {
+  color: #e9e9e9;
+  font-size: 15px;
+}
+
+.izq_col .btn {
+  background-color: #ee312f;
+  color: white;
+  font-size: 14px;
+}
+
+.der_col .avances-curso {
+  font-size: 20px;
+  color: #e9e9e9;
+  text-shadow: 0px 0px 1px #333;
+}
+
+.der_col #basicChart {
+  min-height: 100% !important;
+}
+
+.der_col #responsive-chart {
+  /* 
+
+  */
+}
+
+/* Second row */
+
+.second-row {
+  color: #333333;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.second-row .resultados-curso {
+  color: #333333;
+  font-size: 20px;
+  text-shadow: 0px 0px 1px #333;
+}
+
+.second-row .avances-lecciones {
+  font-size: 15px;
+  margin-top: 20px;
+  color: #333333;
+}
+
 

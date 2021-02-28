@@ -2,35 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Descuento;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class PreciosController extends Controller
+class PanelAdministrador extends Controller
 {
 
-    /* 
-        Solo entran admins
-    */
+
     public function __construct()
     {
-        /*         $this->middleware(['auth','roles:admin']); */
+        $this->middleware(['auth', 'roles:admin']);
     }
 
+    public function index(Request $request){
+        $relacionEloquent = 'roles'; //Nombre de tu relacion con roles en el modelo User
+ 
+      
+         if($request->ajax()){
+            return User::all();
+            /*  return $usuariosAdmins = User::whereHas($relacionEloquent, function ($query) {
+                 return $query->where('key', '=', 'admin');
+             })->get(); */
+         }else{
+             return view('administrador');
+         } 
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        if ($request->ajax()) {
-            return Descuento::first();
-        } else {
-            return view('precios');
-        }
-    }
-
+    
+     }
+ 
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -81,13 +82,11 @@ class PreciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+     public function update($id)
     {
-        $descuento = Descuento::find($id);
-        $descuento->totalDescuento = $request->totalDescuento;
-        $descuento->save();
-        return $descuento;
-    }
+        return  User::findOrFail($id)->update(Request()->all());
+    } 
+    
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +96,6 @@ class PreciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::findOrFail($id)->delete();
     }
 }

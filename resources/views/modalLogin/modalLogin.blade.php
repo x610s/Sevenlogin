@@ -4,7 +4,7 @@
 </li>
       <li class="nav-item">
        <a  class="nav-link" data-toggle="modal" data-target="#exampleModal">
-               Sign in
+              Login
         </a>
    </li>
 
@@ -19,7 +19,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" id="login-modal">
                         @csrf
 
                         <div class="form-group row">
@@ -65,8 +65,11 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    Ingresar
                                 </button>
+
+
+                         
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -77,10 +80,18 @@
                         </div>
                     </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
   </div>
 </div>
+{{-- 
+  <a class="dropdown-item text-dark" href="{{ route('logout') }}" onclick="event.preventDefault();
+        document.getElementById('logout-form').submit();">
+            Logout
+        </a> --}}
 
+
+{{-- 
+        <button type="submit" class="btn btn-primary" >
+            {{ __('Login') }}
+        </button> --}}
